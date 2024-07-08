@@ -11,8 +11,8 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/password"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/redis"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -40,7 +40,7 @@ func (h *handler) Detail(ctx *gin.Context) {
 	searchOneData.Id = core.SessionUserInfo(ctx).UserID
 	searchOneData.IsUsed = 1
 
-	info, err := h.adminService.Detail(ctx, searchOneData)
+	info, err := h.service.Detail(ctx, searchOneData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminDetailError, err)

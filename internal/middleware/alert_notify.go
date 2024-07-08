@@ -11,8 +11,8 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/core"
 	"github.com/ChangSZ/gin-boilerplate/internal/proposal"
 	"github.com/ChangSZ/gin-boilerplate/pkg/env"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 

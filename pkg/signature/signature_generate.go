@@ -10,7 +10,8 @@ import (
 	"strings"
 
 	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
-	"github.com/ChangSZ/gin-boilerplate/pkg/timeutil"
+
+	"github.com/ChangSZ/golib/timeutil"
 )
 
 // Generate

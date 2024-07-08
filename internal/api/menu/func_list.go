@@ -6,8 +6,8 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/menu"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 )
@@ -39,7 +39,7 @@ type listResponse struct {
 // @Security LoginToken
 func (h *handler) List(ctx *gin.Context) {
 	res := new(listResponse)
-	resListData, err := h.menuService.List(ctx, new(menu.SearchData))
+	resListData, err := h.service.List(ctx, new(menu.SearchData))
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.MenuListError, err)

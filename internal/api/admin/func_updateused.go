@@ -5,9 +5,9 @@ import (
 
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -49,7 +49,7 @@ func (h *handler) UpdateUsed(ctx *gin.Context) {
 	}
 
 	id := int64(ids[0])
-	err = h.adminService.UpdateUsed(ctx, id, req.Used)
+	err = h.service.UpdateUsed(ctx, id, req.Used)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminUpdateError, err)

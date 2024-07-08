@@ -5,9 +5,9 @@ import (
 
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -50,7 +50,7 @@ func (h *handler) UpdateSort(ctx *gin.Context) {
 
 	id := int64(ids[0])
 
-	err = h.menuService.UpdateSort(ctx, id, req.Sort)
+	err = h.service.UpdateSort(ctx, id, req.Sort)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.MenuUpdateError, err)

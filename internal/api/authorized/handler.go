@@ -3,8 +3,8 @@ package authorized
 import (
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/authorized"
-	"github.com/ChangSZ/gin-boilerplate/pkg/hash"
 
+	"github.com/ChangSZ/golib/hash"
 	"github.com/gin-gonic/gin"
 )
 
@@ -50,14 +50,14 @@ type Handler interface {
 }
 
 type handler struct {
-	authorizedService authorized.Service
-	hashids           hash.Hash
+	service authorized.Service
+	hashids hash.Hash
 }
 
 func New() Handler {
 	return &handler{
-		authorizedService: authorized.New(),
-		hashids:           hash.New(configs.Get().HashIds.Secret, configs.Get().HashIds.Length),
+		service: authorized.New(),
+		hashids: hash.New(configs.Get().HashIds.Secret, configs.Get().HashIds.Length),
 	}
 }
 

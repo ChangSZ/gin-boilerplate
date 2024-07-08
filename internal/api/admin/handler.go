@@ -3,8 +3,8 @@ package admin
 import (
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
-	"github.com/ChangSZ/gin-boilerplate/pkg/hash"
 
+	"github.com/ChangSZ/golib/hash"
 	"github.com/gin-gonic/gin"
 )
 
@@ -80,14 +80,14 @@ type Handler interface {
 }
 
 type handler struct {
-	hashids      hash.Hash
-	adminService admin.Service
+	hashids hash.Hash
+	service admin.Service
 }
 
 func New() Handler {
 	return &handler{
-		hashids:      hash.New(configs.Get().HashIds.Secret, configs.Get().HashIds.Length),
-		adminService: admin.New(),
+		hashids: hash.New(configs.Get().HashIds.Secret, configs.Get().HashIds.Length),
+		service: admin.New(),
 	}
 }
 

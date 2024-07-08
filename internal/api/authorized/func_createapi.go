@@ -6,9 +6,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/authorized"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -53,7 +53,7 @@ func (h *handler) CreateAPI(ctx *gin.Context) {
 
 	id := int64(ids[0])
 	// 通过 id 查询出 business_key
-	authorizedInfo, err := h.authorizedService.Detail(ctx, id)
+	authorizedInfo, err := h.service.Detail(ctx, id)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AuthorizedDetailError, err)
@@ -65,7 +65,7 @@ func (h *handler) CreateAPI(ctx *gin.Context) {
 	createAPIData.Method = req.Method
 	createAPIData.API = req.API
 
-	createId, err := h.authorizedService.CreateAPI(ctx, createAPIData)
+	createId, err := h.service.CreateAPI(ctx, createAPIData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AuthorizedCreateAPIError, err)

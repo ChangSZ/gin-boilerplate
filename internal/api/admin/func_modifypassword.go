@@ -8,9 +8,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/core"
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/password"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -49,14 +49,14 @@ func (h *handler) ModifyPassword(ctx *gin.Context) {
 	searchOneData.Password = password.GeneratePassword(req.OldPassword)
 	searchOneData.IsUsed = 1
 
-	info, err := h.adminService.Detail(ctx, searchOneData)
+	info, err := h.service.Detail(ctx, searchOneData)
 	if err != nil || info == nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminModifyPasswordError, err)
 		return
 	}
 
-	if err := h.adminService.ModifyPassword(ctx, core.SessionUserInfo(ctx).UserID, req.NewPassword); err != nil {
+	if err := h.service.ModifyPassword(ctx, core.SessionUserInfo(ctx).UserID, req.NewPassword); err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminModifyPasswordError, err)
 		return

@@ -20,3 +20,4 @@
 !.gitkeep
 /logs/*
 __debug_bin*
+INSTALL.lock

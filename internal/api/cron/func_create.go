@@ -6,9 +6,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/cron"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -82,7 +82,7 @@ func (h *handler) Create(ctx *gin.Context) {
 	createData.Remark = req.Remark
 	createData.IsUsed = req.IsUsed
 
-	id, err := h.cronService.Create(ctx, createData)
+	id, err := h.service.Create(ctx, createData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.CronCreateError, err)

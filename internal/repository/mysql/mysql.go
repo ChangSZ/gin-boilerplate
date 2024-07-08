@@ -6,8 +6,8 @@ import (
 
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 
+	"github.com/ChangSZ/golib/log"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"

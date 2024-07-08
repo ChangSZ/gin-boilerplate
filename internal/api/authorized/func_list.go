@@ -6,10 +6,10 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/authorized"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
-	"github.com/ChangSZ/gin-boilerplate/pkg/timeutil"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
+	"github.com/ChangSZ/golib/timeutil"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 )
@@ -88,14 +88,14 @@ func (h *handler) List(ctx *gin.Context) {
 	searchData.BusinessSecret = req.BusinessSecret
 	searchData.Remark = req.Remark
 
-	resListData, err := h.authorizedService.PageList(ctx, searchData)
+	resListData, err := h.service.PageList(ctx, searchData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AuthorizedListError, err)
 		return
 	}
 
-	resCountData, err := h.authorizedService.PageListCount(ctx, searchData)
+	resCountData, err := h.service.PageListCount(ctx, searchData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AuthorizedListError, err)

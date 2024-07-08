@@ -11,7 +11,8 @@ import (
 	"time"
 
 	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
-	"github.com/ChangSZ/gin-boilerplate/pkg/timeutil"
+
+	"github.com/ChangSZ/golib/timeutil"
 )
 
 func (s *signature) Verify(authorization, date string, path string, method string, params url.Values) (ok bool, err error) {

@@ -6,9 +6,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/authorized"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 )
@@ -59,7 +59,7 @@ func (h *handler) ListAPI(ctx *gin.Context) {
 	id := int64(ids[0])
 
 	// 通过 id 查询出 business_key
-	authorizedInfo, err := h.authorizedService.Detail(ctx, id)
+	authorizedInfo, err := h.service.Detail(ctx, id)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AuthorizedDetailError, err)
@@ -71,7 +71,7 @@ func (h *handler) ListAPI(ctx *gin.Context) {
 	searchAPIData := new(authorized.SearchAPIData)
 	searchAPIData.BusinessKey = authorizedInfo.BusinessKey
 
-	resListData, err := h.authorizedService.ListAPI(ctx, searchAPIData)
+	resListData, err := h.service.ListAPI(ctx, searchAPIData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AuthorizedListAPIError, err)

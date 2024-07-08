@@ -8,10 +8,10 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/core"
 	"github.com/ChangSZ/gin-boilerplate/internal/websocket/sysmessage"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
-	"github.com/ChangSZ/gin-boilerplate/pkg/timeutil"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
+	"github.com/ChangSZ/golib/timeutil"
 	"github.com/gin-gonic/gin"
 )
 

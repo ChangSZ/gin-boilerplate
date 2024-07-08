@@ -15,8 +15,8 @@ user = ''
 [mysql]
 [mysql.base]
 connMaxLifeTime = 60
-maxidleconn = 60
-maxopenconn = 10
+maxIdleConn = 60
+maxOpenConn = 10
 
 [mysql.read]
 addr = '127.0.0.1:3306'
@@ -33,7 +33,7 @@ user = 'root'
 [redis]
 addr = '127.0.0.1:6379'
 db = '0'
-maxretries = 3
-minidleconns = 5
+maxRetries = 3
+minIdleConns = 5
 pass = ''
-poolsize = 10
+poolSize = 10

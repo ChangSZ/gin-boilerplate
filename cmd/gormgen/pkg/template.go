@@ -69,50 +69,40 @@ func (qb *{{.QueryBuilderName}}) buildQuery(db *gorm.DB) *gorm.DB {
 	return ret
 }
 
-func (qb *{{.QueryBuilderName}}) Updates(db *gorm.DB, m map[string]interface{}) (err error) {
+func (qb *{{.QueryBuilderName}}) Updates(db *gorm.DB, m map[string]interface{}) (int64, error) {
 	db = db.Model(&{{.StructName}}{})
 
 	for _, where := range qb.where {
 		db.Where(where.prefix, where.value)
 	}
 
-	if err = db.Updates(m).Error; err != nil {
-		return errors.Wrap(err, "updates err")
-	}
-	return nil
-}
-
-func (qb *{{.QueryBuilderName}}) Update(db *gorm.DB, data *{{.StructName}}) (cnt int64, err error) {
-	db = db.Model(&{{.StructName}}{})
-
-	for _, where := range qb.where {
-		db.Where(where.prefix, where.value)
-	}
-
-	ret := db.Updates(data)
-	err = ret.Error
+	ret := db.Updates(m)
+	err := ret.Error
 	if err != nil {
-		return 0, errors.Wrap(err, "update err")
+		return 0, errors.Wrap(err, "updates err")
 	}
 	return ret.RowsAffected, nil
 }
 
-func (qb *{{.QueryBuilderName}}) Delete(db *gorm.DB) (err error) {
+
+func (qb *{{.QueryBuilderName}}) Delete(db *gorm.DB) (int64, error) {
 	for _, where := range qb.where {
 		db = db.Where(where.prefix, where.value)
 	}
 
-	if err = db.Delete(&{{.StructName}}{}).Error; err != nil {
-		return errors.Wrap(err, "delete err")
+	ret :=db.Delete(&{{.StructName}}{})
+	err := ret.Error
+	if err != nil {
+		return 0, errors.Wrap(err, "delete err")
 	}
-	return nil
+	return ret.RowsAffected, nil
 }
 
 func (qb *{{.QueryBuilderName}}) Count(db *gorm.DB) (int64, error) {
 	var c int64
 	res := qb.buildQuery(db).Model(&{{.StructName}}{}).Count(&c)
 	if res.Error != nil && res.Error == gorm.ErrRecordNotFound {
-		c = 0
+		return 0, nil
 	}
 	return c, res.Error
 }
@@ -121,7 +111,7 @@ func (qb *{{.QueryBuilderName}}) First(db *gorm.DB) (*{{.StructName}}, error) {
 	ret := &{{.StructName}}{}
 	res := qb.buildQuery(db).First(ret)
 	if res.Error != nil && res.Error == gorm.ErrRecordNotFound {
-		ret = nil
+		return nil, nil
 	}
 	return ret, res.Error
 }

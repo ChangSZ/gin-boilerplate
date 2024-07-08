@@ -11,10 +11,10 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql/authorized"
 	authorizedService "github.com/ChangSZ/gin-boilerplate/internal/services/authorized"
 	"github.com/ChangSZ/gin-boilerplate/pkg/env"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/signature"
 	"github.com/ChangSZ/gin-boilerplate/pkg/urltable"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 

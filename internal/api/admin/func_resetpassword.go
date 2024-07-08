@@ -5,9 +5,9 @@ import (
 
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -47,7 +47,7 @@ func (h *handler) ResetPassword(ctx *gin.Context) {
 	}
 
 	id := int64(ids[0])
-	err = h.adminService.ResetPassword(ctx, id)
+	err = h.service.ResetPassword(ctx, id)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminResetPasswordError, err)

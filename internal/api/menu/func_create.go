@@ -6,9 +6,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/menu"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 )
@@ -61,7 +61,7 @@ func (h *handler) Create(ctx *gin.Context) {
 		updateData.Icon = req.Icon
 		updateData.Link = req.Link
 
-		err = h.menuService.Modify(ctx, id, updateData)
+		err = h.service.Modify(ctx, id, updateData)
 		if err != nil {
 			log.WithTrace(ctx).Error(err)
 			api.Response(ctx, http.StatusBadRequest, code.MenuUpdateError, err)
@@ -88,7 +88,7 @@ func (h *handler) Create(ctx *gin.Context) {
 		createData.Link = req.Link
 		createData.Level = cast.ToInt32(level)
 
-		id, err := h.menuService.Create(ctx, createData)
+		id, err := h.service.Create(ctx, createData)
 		if err != nil {
 			log.WithTrace(ctx).Error(err)
 			api.Response(ctx, http.StatusBadRequest, code.MenuCreateError, err)

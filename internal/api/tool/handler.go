@@ -2,8 +2,8 @@ package tool
 
 import (
 	"github.com/ChangSZ/gin-boilerplate/configs"
-	"github.com/ChangSZ/gin-boilerplate/pkg/hash"
 
+	"github.com/ChangSZ/golib/hash"
 	"github.com/gin-gonic/gin"
 )
 

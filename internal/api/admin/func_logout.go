@@ -8,8 +8,8 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/core"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/redis"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 

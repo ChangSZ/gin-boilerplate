@@ -6,9 +6,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -53,7 +53,7 @@ func (h *handler) CreateAdminMenu(ctx *gin.Context) {
 	createData.AdminId = int64(ids[0])
 	createData.Actions = req.Actions
 
-	err = h.adminService.CreateMenu(ctx, createData)
+	err = h.service.CreateMenu(ctx, createData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminMenuCreateError, err)

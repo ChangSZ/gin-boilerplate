@@ -6,9 +6,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/menu"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -56,7 +56,7 @@ func (h *handler) Detail(ctx *gin.Context) {
 	searchOneData := new(menu.SearchOneData)
 	searchOneData.Id = id
 
-	info, err := h.menuService.Detail(ctx, searchOneData)
+	info, err := h.service.Detail(ctx, searchOneData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.MenuDetailError, err)

@@ -9,10 +9,10 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/password"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/redis"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
-	"github.com/ChangSZ/gin-boilerplate/pkg/timeutil"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
+	"github.com/ChangSZ/golib/timeutil"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 )
@@ -89,14 +89,14 @@ func (h *handler) List(ctx *gin.Context) {
 	searchData.Nickname = req.Nickname
 	searchData.Mobile = req.Mobile
 
-	resListData, err := h.adminService.PageList(ctx, searchData)
+	resListData, err := h.service.PageList(ctx, searchData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminListError, err)
 		return
 	}
 
-	resCountData, err := h.adminService.PageListCount(ctx, searchData)
+	resCountData, err := h.service.PageListCount(ctx, searchData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminListError, err)

@@ -5,7 +5,8 @@ import (
 
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql/cron_task"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
+
+	"github.com/ChangSZ/golib/log"
 )
 
 func (s *server) Start() {

@@ -9,10 +9,10 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/signature"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -51,7 +51,7 @@ func (h *handler) Sign(ctx *gin.Context) {
 		return
 	}
 
-	authorizedInfo, err := h.authorizedService.DetailByKey(ctx, req.Key)
+	authorizedInfo, err := h.service.DetailByKey(ctx, req.Key)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AuthorizationError, err)

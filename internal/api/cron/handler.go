@@ -4,8 +4,8 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	cronRepo "github.com/ChangSZ/gin-boilerplate/internal/repository/cron"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/cron"
-	"github.com/ChangSZ/gin-boilerplate/pkg/hash"
 
+	"github.com/ChangSZ/golib/hash"
 	"github.com/gin-gonic/gin"
 )
 
@@ -46,14 +46,14 @@ type Handler interface {
 }
 
 type handler struct {
-	hashids     hash.Hash
-	cronService cron.Service
+	hashids hash.Hash
+	service cron.Service
 }
 
 func New(cronServer cronRepo.Server) Handler {
 	return &handler{
-		hashids:     hash.New(configs.Get().HashIds.Secret, configs.Get().HashIds.Length),
-		cronService: cron.New(cronServer),
+		hashids: hash.New(configs.Get().HashIds.Secret, configs.Get().HashIds.Length),
+		service: cron.New(cronServer),
 	}
 }
 

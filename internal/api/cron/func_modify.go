@@ -6,9 +6,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/cron"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -93,7 +93,7 @@ func (h *handler) Modify(ctx *gin.Context) {
 	modifyData.Remark = req.Remark
 	modifyData.IsUsed = req.IsUsed
 
-	if err := h.cronService.Modify(ctx, id, modifyData); err != nil {
+	if err := h.service.Modify(ctx, id, modifyData); err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.CronUpdateError, err)
 		return

@@ -6,9 +6,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -52,7 +52,7 @@ func (h *handler) ListAdminMenu(ctx *gin.Context) {
 	searchOneData.Id = int64(ids[0])
 	searchOneData.IsUsed = 1
 
-	info, err := h.adminService.Detail(ctx, searchOneData)
+	info, err := h.service.Detail(ctx, searchOneData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminMenuListError, err)
@@ -64,7 +64,7 @@ func (h *handler) ListAdminMenu(ctx *gin.Context) {
 	searchData := new(admin.SearchListMenuData)
 	searchData.AdminId = int64(ids[0])
 
-	listData, err := h.adminService.ListMenu(ctx, searchData)
+	listData, err := h.service.ListMenu(ctx, searchData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminMenuListError, err)

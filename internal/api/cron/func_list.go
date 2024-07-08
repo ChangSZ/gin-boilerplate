@@ -7,10 +7,10 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql/cron_task"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/cron"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
-	"github.com/ChangSZ/gin-boilerplate/pkg/timeutil"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
+	"github.com/ChangSZ/golib/timeutil"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 )
@@ -96,14 +96,14 @@ func (h *handler) List(ctx *gin.Context) {
 	searchData.Protocol = cast.ToInt32(req.Protocol)
 	searchData.IsUsed = cast.ToInt32(req.IsUsed)
 
-	resListData, err := h.cronService.PageList(ctx, searchData)
+	resListData, err := h.service.PageList(ctx, searchData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.CronListError, err)
 		return
 	}
 
-	resCountData, err := h.cronService.PageListCount(ctx, searchData)
+	resCountData, err := h.service.PageListCount(ctx, searchData)
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.CronListError, err)

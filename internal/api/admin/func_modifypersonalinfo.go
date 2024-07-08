@@ -7,9 +7,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/core"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 
@@ -47,7 +47,7 @@ func (h *handler) ModifyPersonalInfo(ctx *gin.Context) {
 	modifyData.Nickname = req.Nickname
 	modifyData.Mobile = req.Mobile
 
-	if err := h.adminService.ModifyPersonalInfo(ctx, core.SessionUserInfo(ctx).UserID, modifyData); err != nil {
+	if err := h.service.ModifyPersonalInfo(ctx, core.SessionUserInfo(ctx).UserID, modifyData); err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.AdminModifyPersonalInfoError, err)
 		return

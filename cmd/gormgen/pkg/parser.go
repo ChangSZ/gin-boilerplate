@@ -80,9 +80,16 @@ func (p *Parser) parseTypes(file *ast.File) (ret []structConfig) {
 
 				if t, _ok := v.Type.(*ast.Ident); _ok {
 					optionField.FieldType = t.String()
+				} else if t, _ok := v.Type.(*ast.ArrayType); _ok {
+					if ti, _ok := t.Elt.(*ast.Ident); _ok {
+						optionField.FieldType = "[]" + ti.String()
+					}
+					// 切片元素类型非Ident的先不care, 目前不需要
 				} else {
 					if v.Tag != nil {
-						if strings.Contains(v.Tag.Value, "gorm") && strings.Contains(strings.ToLower(v.Tag.Value), "time") {
+						if strings.Contains(v.Tag.Value, "gorm") &&
+							(strings.Contains(strings.ToLower(v.Tag.Value), "time") ||
+								strings.Contains(strings.ToLower(v.Tag.Value), "date")) {
 							optionField.FieldType = "time.Time"
 						}
 					}

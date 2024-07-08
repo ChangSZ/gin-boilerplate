@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql/cron_task"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/jakecoffman/cron"
 )
 

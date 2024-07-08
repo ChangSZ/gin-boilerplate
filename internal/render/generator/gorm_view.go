@@ -6,8 +6,8 @@ import (
 
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
 
+	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 )
 

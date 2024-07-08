@@ -1,6 +1,6 @@
 package socket
 
-import "github.com/ChangSZ/gin-boilerplate/pkg/log"
+import "github.com/ChangSZ/golib/log"
 
 func (s *server) OnClose() {
 	err := s.socket.Close()

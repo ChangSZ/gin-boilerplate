@@ -4,8 +4,9 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/proposal"
 	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
-	"github.com/ChangSZ/gin-boilerplate/pkg/log"
-	"github.com/ChangSZ/gin-boilerplate/pkg/mail"
+
+	"github.com/ChangSZ/golib/log"
+	"github.com/ChangSZ/golib/mail"
 )
 
 // NotifyHandler 告警通知
