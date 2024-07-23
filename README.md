@@ -1,6 +1,6 @@
 ## 关于
 
-`gin-boilerplate` 是基于 [go-gin-api](https://github.com/xinliangnote/go-gin-api) 改进的框架， 同时也是基于gin服务扩展的框架模板
+`gin-boilerplate` 是基于多个web框架改进的框架， 同时也是基于gin服务扩展的框架模板
 
 
 ## 快速开始
@@ -39,4 +39,4 @@ $ go run main.go -env fat
 ```
 
 ## 框架使用
-参见[go-gin-api语雀](https://www.yuque.com/xinliangnote/go-gin-api), 前端几乎没动, 可以参考使用
+参见[go框架: gin-boilerplate](https://water-melon.top/detail/10)
