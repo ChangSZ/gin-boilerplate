@@ -1,11 +1,11 @@
 package admin
 
 import (
-	"github.com/ChangSZ/gin-boilerplate/configs"
-	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
-
 	"github.com/ChangSZ/golib/hash"
 	"github.com/gin-gonic/gin"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
+	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
 )
 
 var _ Handler = (*handler)(nil)

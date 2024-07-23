@@ -9,10 +9,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql"
-
 	"github.com/pkg/errors"
 	"gorm.io/gorm"
+
+	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql"
 )
 
 func NewModel() *AdminMenu {

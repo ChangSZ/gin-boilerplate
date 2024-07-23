@@ -5,13 +5,13 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/ChangSZ/gin-boilerplate/configs"
-	"github.com/ChangSZ/gin-boilerplate/internal/code"
-
 	"github.com/dave/dst"
 	"github.com/dave/dst/decorator"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
+	"github.com/ChangSZ/gin-boilerplate/internal/code"
 )
 
 const minBusinessCode = 20000

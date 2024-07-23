@@ -3,9 +3,9 @@ package sysmessage
 import (
 	"errors"
 
-	"github.com/ChangSZ/gin-boilerplate/internal/repository/socket"
-
 	"github.com/gin-gonic/gin"
+
+	"github.com/ChangSZ/gin-boilerplate/internal/repository/socket"
 )
 
 var (

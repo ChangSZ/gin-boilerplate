@@ -6,10 +6,10 @@ import (
 	"strings"
 	"time"
 
+	"github.com/go-redis/redis/v8"
+
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
-
-	"github.com/go-redis/redis/v8"
 )
 
 var _ Repo = (*cacheRepo)(nil)

@@ -1,6 +1,8 @@
 package router
 
 import (
+	"github.com/gin-gonic/gin"
+
 	"github.com/ChangSZ/gin-boilerplate/internal/api/admin"
 	"github.com/ChangSZ/gin-boilerplate/internal/api/authorized"
 	"github.com/ChangSZ/gin-boilerplate/internal/api/config"
@@ -11,8 +13,6 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/middleware"
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/core"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/cron"
-
-	"github.com/gin-gonic/gin"
 )
 
 func setApiRouter(eng *gin.Engine, cronServer cron.Server) {

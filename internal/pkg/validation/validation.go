@@ -3,8 +3,6 @@ package validation
 import (
 	"fmt"
 
-	"github.com/ChangSZ/gin-boilerplate/configs"
-
 	"github.com/gin-gonic/gin/binding"
 	"github.com/go-playground/locales/en"
 	"github.com/go-playground/locales/zh"
@@ -12,6 +10,8 @@ import (
 	"github.com/go-playground/validator/v10"
 	enTranslation "github.com/go-playground/validator/v10/translations/en"
 	zhTranslation "github.com/go-playground/validator/v10/translations/zh"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
 )
 
 var trans ut.Translator

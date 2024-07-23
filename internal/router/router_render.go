@@ -3,6 +3,8 @@ package router
 import (
 	"net/http"
 
+	"github.com/gin-gonic/gin"
+
 	"github.com/ChangSZ/gin-boilerplate/internal/render/admin"
 	"github.com/ChangSZ/gin-boilerplate/internal/render/authorized"
 	"github.com/ChangSZ/gin-boilerplate/internal/render/config"
@@ -13,8 +15,6 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/render/install"
 	"github.com/ChangSZ/gin-boilerplate/internal/render/tool"
 	"github.com/ChangSZ/gin-boilerplate/internal/render/upgrade"
-
-	"github.com/gin-gonic/gin"
 )
 
 func setRenderRouter(eng *gin.Engine) {

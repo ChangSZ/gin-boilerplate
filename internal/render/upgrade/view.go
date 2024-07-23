@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/gin-gonic/gin"
+
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql"
-
-	"github.com/gin-gonic/gin"
 )
 
 type upgradeViewResponse struct {

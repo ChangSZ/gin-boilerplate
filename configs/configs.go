@@ -8,11 +8,11 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ChangSZ/gin-boilerplate/pkg/env"
-	"github.com/ChangSZ/gin-boilerplate/pkg/file"
-
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
+
+	"github.com/ChangSZ/gin-boilerplate/pkg/env"
+	"github.com/ChangSZ/gin-boilerplate/pkg/file"
 )
 
 var config = new(Config)

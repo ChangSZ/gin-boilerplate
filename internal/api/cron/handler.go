@@ -1,12 +1,12 @@
 package cron
 
 import (
+	"github.com/ChangSZ/golib/hash"
+	"github.com/gin-gonic/gin"
+
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	cronRepo "github.com/ChangSZ/gin-boilerplate/internal/repository/cron"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/cron"
-
-	"github.com/ChangSZ/golib/hash"
-	"github.com/gin-gonic/gin"
 )
 
 var _ Handler = (*handler)(nil)

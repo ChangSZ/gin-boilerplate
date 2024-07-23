@@ -4,15 +4,15 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/ChangSZ/golib/log"
+	"github.com/ChangSZ/golib/timeutil"
+	"github.com/gin-gonic/gin"
+
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/core"
 	"github.com/ChangSZ/gin-boilerplate/internal/websocket/sysmessage"
 	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
-
-	"github.com/ChangSZ/golib/log"
-	"github.com/ChangSZ/golib/timeutil"
-	"github.com/gin-gonic/gin"
 )
 
 type sendMessageRequest struct {

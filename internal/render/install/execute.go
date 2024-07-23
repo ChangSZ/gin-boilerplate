@@ -6,12 +6,6 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/ChangSZ/gin-boilerplate/configs"
-	"github.com/ChangSZ/gin-boilerplate/internal/api"
-	"github.com/ChangSZ/gin-boilerplate/internal/code"
-	"github.com/ChangSZ/gin-boilerplate/internal/proposal/tablesqls"
-	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
-
 	"github.com/ChangSZ/golib/log"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v7"
@@ -20,6 +14,12 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
+	"github.com/ChangSZ/gin-boilerplate/internal/api"
+	"github.com/ChangSZ/gin-boilerplate/internal/code"
+	"github.com/ChangSZ/gin-boilerplate/internal/proposal/tablesqls"
+	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 )
 
 type initExecuteRequest struct {

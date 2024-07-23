@@ -4,11 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/ChangSZ/gin-boilerplate/internal/api"
-	"github.com/ChangSZ/gin-boilerplate/internal/middleware"
-	"github.com/ChangSZ/gin-boilerplate/pkg/env"
-
 	"github.com/ChangSZ/golib/color"
+	"github.com/ChangSZ/golib/gin/md"
 	"github.com/ChangSZ/golib/log"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/pprof"
@@ -16,6 +13,12 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	swaggerfiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
+	_ "github.com/ChangSZ/gin-boilerplate/docs"
+	"github.com/ChangSZ/gin-boilerplate/internal/api"
+	"github.com/ChangSZ/gin-boilerplate/internal/middleware"
+	"github.com/ChangSZ/gin-boilerplate/pkg/env"
 )
 
 func InitEngine(eng *gin.Engine, serverName, ui string) *gin.Engine {
@@ -38,11 +41,10 @@ func InitEngine(eng *gin.Engine, serverName, ui string) *gin.Engine {
 
 	eng.Use(
 		cors.New(config),
-		middleware.Rate(),
+		md.Rate(configs.MaxRequestsPerSecond),
 		middleware.Metrics(),
-		middleware.Tracing(serverName),
-		middleware.AccessLog(log.GetLoggerWithTrace()),
-		// middleware.AlertNotify(),
+		md.Tracing(serverName),
+		md.AccessLog(log.GetLoggerWithTrace()),
 	)
 
 	fmt.Println(color.Blue(ui))

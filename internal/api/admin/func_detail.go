@@ -4,6 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
+	"github.com/ChangSZ/golib/log"
+	"github.com/gin-gonic/gin"
+
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
@@ -11,9 +14,6 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/password"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/redis"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
-
-	"github.com/ChangSZ/golib/log"
-	"github.com/gin-gonic/gin"
 )
 
 type detailResponse struct {

@@ -1,11 +1,11 @@
 package authorized
 
 import (
-	"github.com/ChangSZ/gin-boilerplate/configs"
-	"github.com/ChangSZ/gin-boilerplate/internal/services/authorized"
-
 	"github.com/ChangSZ/golib/hash"
 	"github.com/gin-gonic/gin"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
+	"github.com/ChangSZ/gin-boilerplate/internal/services/authorized"
 )
 
 var _ Handler = (*handler)(nil)

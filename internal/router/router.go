@@ -4,11 +4,10 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/ChangSZ/gin-boilerplate/assets"
-	_ "github.com/ChangSZ/gin-boilerplate/docs"
-	"github.com/ChangSZ/gin-boilerplate/internal/repository/cron"
-
 	"github.com/gin-gonic/gin"
+
+	"github.com/ChangSZ/gin-boilerplate/assets"
+	"github.com/ChangSZ/gin-boilerplate/internal/repository/cron"
 )
 
 const _UI = `

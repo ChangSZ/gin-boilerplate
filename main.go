@@ -1,6 +1,9 @@
 package main
 
 import (
+	"github.com/ChangSZ/golib/log"
+	"github.com/ChangSZ/golib/shutdown"
+
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/cron"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql"
@@ -8,9 +11,6 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/internal/router"
 	"github.com/ChangSZ/gin-boilerplate/pkg/browser"
 	"github.com/ChangSZ/gin-boilerplate/pkg/file"
-
-	"github.com/ChangSZ/golib/log"
-	"github.com/ChangSZ/golib/shutdown"
 )
 
 // @title swagger 接口文档
@@ -44,20 +44,20 @@ func main() {
 	_, ok := file.IsExists(configs.ProjectInstallMark)
 	if !ok { // 未安装
 		openBrowserUri += "/install"
-	} else { // 已安装
-		// 初始化 DB
-		mysql.Init()
-
-		// 初始化 Cache
-		redis.Init()
-
-		// 初始化 CRON Server
-		cronServer, err = cron.New()
-		if err != nil {
-			log.Fatal("new cron err: ", err)
-		}
-		cronServer.Start()
 	}
+
+	// 初始化 DB
+	mysql.Init()
+
+	// 初始化 Cache
+	redis.Init()
+
+	// 初始化 CRON Server
+	cronServer, err = cron.New()
+	if err != nil {
+		log.Fatal("new cron err: ", err)
+	}
+	cronServer.Start()
 
 	// 初始化路由
 	eng := router.RoutersInit(cronServer)

@@ -8,9 +8,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ChangSZ/gin-boilerplate/cmd/mysqlmd/mysql"
-
 	"gorm.io/gorm"
+
+	"github.com/ChangSZ/gin-boilerplate/cmd/mysqlmd/mysql"
 )
 
 type tableInfo struct {

@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
-
 	"github.com/gorilla/websocket"
+
+	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
 )
 
 var _ Server = (*server)(nil)

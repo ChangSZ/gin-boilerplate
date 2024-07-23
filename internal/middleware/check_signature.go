@@ -5,6 +5,9 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/ChangSZ/golib/log"
+	"github.com/gin-gonic/gin"
+
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
@@ -13,9 +16,6 @@ import (
 	"github.com/ChangSZ/gin-boilerplate/pkg/env"
 	"github.com/ChangSZ/gin-boilerplate/pkg/signature"
 	"github.com/ChangSZ/gin-boilerplate/pkg/urltable"
-
-	"github.com/ChangSZ/golib/log"
-	"github.com/gin-gonic/gin"
 )
 
 var whiteListPath = map[string]bool{

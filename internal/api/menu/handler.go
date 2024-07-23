@@ -1,11 +1,11 @@
 package menu
 
 import (
-	"github.com/ChangSZ/gin-boilerplate/configs"
-	"github.com/ChangSZ/gin-boilerplate/internal/services/menu"
-
 	"github.com/ChangSZ/golib/hash"
 	"github.com/gin-gonic/gin"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
+	"github.com/ChangSZ/gin-boilerplate/internal/services/menu"
 )
 
 var _ Handler = (*handler)(nil)

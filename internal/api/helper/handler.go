@@ -1,9 +1,9 @@
 package helper
 
 import (
-	"github.com/ChangSZ/gin-boilerplate/internal/services/authorized"
-
 	"github.com/gin-gonic/gin"
+
+	"github.com/ChangSZ/gin-boilerplate/internal/services/authorized"
 )
 
 var _ Handler = (*handler)(nil)

@@ -8,16 +8,16 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ChangSZ/gin-boilerplate/configs"
-	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql"
-	"github.com/ChangSZ/gin-boilerplate/internal/repository/redis"
-	"github.com/ChangSZ/gin-boilerplate/pkg/env"
-
 	"github.com/gin-gonic/gin"
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/disk"
 	"github.com/shirou/gopsutil/host"
 	"github.com/shirou/gopsutil/mem"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
+	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql"
+	"github.com/ChangSZ/gin-boilerplate/internal/repository/redis"
+	"github.com/ChangSZ/gin-boilerplate/pkg/env"
 )
 
 type handler struct{}

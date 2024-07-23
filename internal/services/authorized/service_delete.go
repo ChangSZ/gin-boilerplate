@@ -3,13 +3,13 @@ package authorized
 import (
 	"context"
 
+	"gorm.io/gorm"
+
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/pkg/core"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/mysql/authorized"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/redis"
-
-	"gorm.io/gorm"
 )
 
 func (s *service) Delete(ctx context.Context, id int64) (err error) {

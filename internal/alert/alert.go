@@ -1,12 +1,14 @@
 package alert
 
 import (
-	"github.com/ChangSZ/gin-boilerplate/configs"
-	"github.com/ChangSZ/gin-boilerplate/internal/proposal"
-	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
+	"strings"
 
 	"github.com/ChangSZ/golib/log"
 	"github.com/ChangSZ/golib/mail"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
+	"github.com/ChangSZ/gin-boilerplate/internal/proposal"
+	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
 )
 
 // NotifyHandler 告警通知
@@ -31,18 +33,19 @@ func NotifyHandler() func(msg *proposal.AlertMessage) {
 			return
 		}
 
-		options := &mail.Options{
-			MailHost: cfg.Host,
-			MailPort: cfg.Port,
-			MailUser: cfg.User,
-			MailPass: cfg.Pass,
-			MailTo:   cfg.To,
-			Subject:  subject,
-			Body:     body,
+		client, err := mail.Init(
+			mail.WithUser(cfg.User),
+			mail.WithPwd(cfg.Pass),
+			mail.WithHost(cfg.Host),
+			mail.WithPort(cfg.Port))
+		if err != nil {
+			log.Error("邮件client初始化失败: ", err)
 		}
-		if err := mail.Send(options); err != nil {
+		if err := client.SetTo(strings.Split(cfg.To, ",")).
+			SetSubject(subject).
+			SetBody(body).
+			Send(); err != nil {
 			log.Error("发送告警通知邮件失败: ", errors.WithStack(err))
 		}
-		return
 	}
 }

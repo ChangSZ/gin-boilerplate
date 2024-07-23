@@ -1,10 +1,10 @@
 package tool
 
 import (
-	"github.com/ChangSZ/gin-boilerplate/configs"
-
 	"github.com/ChangSZ/golib/hash"
 	"github.com/gin-gonic/gin"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
 )
 
 var _ Handler = (*handler)(nil)

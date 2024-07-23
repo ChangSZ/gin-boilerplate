@@ -8,10 +8,10 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/gin-gonic/gin"
+
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
-
-	"github.com/gin-gonic/gin"
 )
 
 type gormExecuteRequest struct {

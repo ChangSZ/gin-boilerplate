@@ -9,9 +9,9 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
-
 	"github.com/ChangSZ/golib/timeutil"
+
+	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
 )
 
 // Generate

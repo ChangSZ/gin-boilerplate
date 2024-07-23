@@ -3,11 +3,11 @@ package mysql
 import (
 	"fmt"
 
-	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
-
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/schema"
+
+	"github.com/ChangSZ/gin-boilerplate/pkg/errors"
 )
 
 var _ Repo = (*dbRepo)(nil)

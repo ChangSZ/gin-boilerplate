@@ -8,9 +8,9 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/ChangSZ/gin-boilerplate/internal/api"
-
 	"github.com/gin-gonic/gin"
+
+	"github.com/ChangSZ/gin-boilerplate/internal/api"
 )
 
 type handlerExecuteRequest struct {

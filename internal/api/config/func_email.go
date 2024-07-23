@@ -3,18 +3,19 @@ package config
 import (
 	"fmt"
 	"net/http"
-
-	"github.com/ChangSZ/gin-boilerplate/configs"
-	"github.com/ChangSZ/gin-boilerplate/internal/api"
-	"github.com/ChangSZ/gin-boilerplate/internal/code"
-	"github.com/ChangSZ/gin-boilerplate/pkg/env"
-	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
+	"strings"
 
 	"github.com/ChangSZ/golib/log"
 	"github.com/ChangSZ/golib/mail"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cast"
 	"github.com/spf13/viper"
+
+	"github.com/ChangSZ/gin-boilerplate/configs"
+	"github.com/ChangSZ/gin-boilerplate/internal/api"
+	"github.com/ChangSZ/gin-boilerplate/internal/code"
+	"github.com/ChangSZ/gin-boilerplate/pkg/env"
+	"github.com/ChangSZ/gin-boilerplate/pkg/validator"
 )
 
 type emailRequest struct {
@@ -53,19 +54,23 @@ func (h *handler) Email(ctx *gin.Context) {
 		return
 	}
 
-	options := &mail.Options{
-		MailHost: req.Host,
-		MailPort: cast.ToInt(req.Port),
-		MailUser: req.User,
-		MailPass: req.Pass,
-		MailTo:   req.To,
-		Subject:  fmt.Sprintf("%s[%s] 邮箱告警人调整通知。", configs.ProjectName, env.Active().Value()),
-		Body:     fmt.Sprintf("%s[%s] 已添加您为系统告警通知人。", configs.ProjectName, env.Active().Value()),
-	}
-	if err := mail.Send(options); err != nil {
+	client, err := mail.Init(
+		mail.WithUser(req.User),
+		mail.WithPwd(req.Pass),
+		mail.WithHost(req.Host),
+		mail.WithPort(cast.ToInt(req.Port)))
+	if err != nil {
+		err := fmt.Errorf("邮件client初始化失败: %w", err)
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.SendEmailError, err)
-		return
+	}
+
+	if err := client.SetTo(strings.Split(req.To, ",")).
+		SetSubject(fmt.Sprintf("%s[%s] 邮箱告警人调整通知。", configs.ProjectName, env.Active().Value())).
+		SetBody(fmt.Sprintf("%s[%s] 已添加您为系统告警通知人。", configs.ProjectName, env.Active().Value())).
+		Send(); err != nil {
+		log.WithTrace(ctx).Error(err)
+		api.Response(ctx, http.StatusBadRequest, code.SendEmailError, err)
 	}
 
 	viper.Set("mail.host", req.Host)
@@ -74,7 +79,7 @@ func (h *handler) Email(ctx *gin.Context) {
 	viper.Set("mail.pass", req.Pass)
 	viper.Set("mail.to", req.To)
 
-	err := viper.WriteConfig()
+	err = viper.WriteConfig()
 	if err != nil {
 		log.WithTrace(ctx).Error(err)
 		api.Response(ctx, http.StatusBadRequest, code.WriteConfigError, err)

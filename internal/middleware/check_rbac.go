@@ -5,15 +5,15 @@ import (
 	"errors"
 	"net/http"
 
+	"github.com/ChangSZ/golib/log"
+	"github.com/gin-gonic/gin"
+
 	"github.com/ChangSZ/gin-boilerplate/configs"
 	"github.com/ChangSZ/gin-boilerplate/internal/api"
 	"github.com/ChangSZ/gin-boilerplate/internal/code"
 	"github.com/ChangSZ/gin-boilerplate/internal/repository/redis"
 	"github.com/ChangSZ/gin-boilerplate/internal/services/admin"
 	"github.com/ChangSZ/gin-boilerplate/pkg/urltable"
-
-	"github.com/ChangSZ/golib/log"
-	"github.com/gin-gonic/gin"
 )
 
 // CheckRBAC 验证 RBAC 权限是否合法
